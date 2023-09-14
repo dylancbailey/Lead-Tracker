@@ -21,8 +21,13 @@ button {
     background-color: var(--main-color);
     font-weight: bold;
     color: white;
-    border: none;
+    border: 1px solid var(--main-color);
     padding: 10px 20px;
+}
+
+#delete-btn {
+    background: none;
+    color: var(--main-color);
 }
 
 ul, li, a {
