@@ -2,6 +2,7 @@ let myLeads = []
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const deleteBtn = document.getElementById("delete-btn")
+const tabBtn = document.getElementById("tab-btn")
 const ulEl = document.getElementById("ul-el")
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("leads"))
 
@@ -30,6 +31,15 @@ inputBtn.addEventListener("click", function() {
         localStorage.setItem("leads", JSON.stringify(myLeads))
         render(myLeads)
     }
+})
+
+// Save Tab
+tabBtn.addEventListener("click", function() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("leads", JSON.stringify(myLeads))
+        render(myLeads)
+    })
 })
 
 // Delete All
